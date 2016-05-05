@@ -1,5 +1,6 @@
 # HTML Table to CSV
 
-Use an editable HTML table to create CSV text.  
+Edit CSV using an HTML table as a visualisation.  
 
-Right now, it only works one-way: table-to-csv. In the future, the textarea might accept input for conversion from csv-to-table.
+* Use an editable HTML table to generate CSV text
+* Paste CSV text into a textare to fill an editable HTML table with values

@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <title>HTML Table to CSV</title>
         <link rel="stylesheet" href="table-editor.css" />
+        <script src="table-editor.js"></script>
     </head>
     <body>
         <div>
@@ -15,14 +16,15 @@
         <div>
             <form action="#" method="post">
                 <label for="table-contents">CSV Content</label><br />
-                <textarea id="table-contents" name="contents" cols="80" rows="10" readonly> </textarea>
+                <textarea id="table-contents" name="contents" cols="80" rows="10"> </textarea>
+                <br />
+                <input type="button" value="Parse CSV to table" onclick="table_editor.parse_to_table();" />
                 <br />
                 <label for="table-delimiter">Delimiter</label><br />
                 <input type="text" id="table-delimiter" name="delimiter" size="8" value="|" />
                 <input type="button" value="Apply" />
             </form>
             
-            <script src="table-editor.js"></script>
             <script>
                 table_editor.init('table-visualisation', 'table-contents', 'table-delimiter');
             </script>

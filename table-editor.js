@@ -160,6 +160,31 @@ table_editor = {
         }
     },
     
+    'parse_to_table': function() {
+        this.rows = [];  // Reset the rows.
+        var d = this.delimiter.value;
+        var lines = this.contents_field.value.split('\n');
+        for (var i=0; i<lines.length; i++) {
+            // We want only lines that we can split.
+            if (lines[i].indexOf(d) > -1) {
+                var line_values = lines[i].split(d);
+                // The column names are on the first line.
+                if (i == 0) {
+                    this.columns = line_values;
+                // Every other line contains celldata.
+                } else {
+                    var row = {};
+                    for (var j=0; j<this.columns.length; j++) {
+                        var col = this.columns[j];
+                        if (j < line_values.length) row[col] = line_values[j];
+                    }
+                    this.rows.push(row);
+                }
+            }
+        }
+        this.draw_table();
+    },
+    
     'remove_column': function(col) {
         var c = this.columns[col].valueOf();
         if (confirm('Remove column\n"' +c+ '"?')) {
