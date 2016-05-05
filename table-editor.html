@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>HTML Table to CSV</title>
+        <link rel="stylesheet" href="table-editor.css" />
+    </head>
+    <body>
+        <div>
+            <h1>HTML Table to CSV</h1>
+            <p>Use the [+] to add columns; use the [x] to remove entire columns and rows.</p>
+            <table id="table-visualisation"></table>
+        </div>
+        
+        <div>
+            <form action="#" method="post">
+                <label for="table-contents">CSV Content</label><br />
+                <textarea id="table-contents" name="contents" cols="80" rows="10" readonly> </textarea>
+                <br />
+                <label for="table-delimiter">Delimiter</label><br />
+                <input type="text" id="table-delimiter" name="delimiter" size="8" value="|" />
+                <input type="button" value="Apply" />
+            </form>
+            
+            <script src="table-editor.js"></script>
+            <script>
+                table_editor.init('table-visualisation', 'table-contents', 'table-delimiter');
+            </script>
+        </div>
+    </body>
+</html>

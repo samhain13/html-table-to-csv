@@ -1,0 +1,41 @@
+html {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 62.5%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px 10px;
+}
+    body > div { height: 50%; overflow: auto; }
+
+h1 { font-size: 1.6em; margin: 0px; padding-top: 10px; }
+p { font-size: 1.2em; margin: 0px; padding-bottom: 10px; }
+
+label { font-size: 1.2em; font-weight: bold; }
+
+input, textarea {
+    background: rgb(255,255,255);
+    border: 1px rgb(200,200,200) solid;
+    color: rgb(0,0,0);
+    font-family: monospace;
+    font-size: 1.6em;
+    margin: 5px 0px 10px 0px;
+    padding: 4px;
+}
+
+table {
+    margin-bottom: 10px;
+    min-width: 400px;
+}
+    thead td { background: rgb(200,200,200); }
+        thead td a { float: right; }
+    td { font-size: 1.2em; padding: 4px; }
+    td.grey-out { color: rgb(130,130,130); }
+    td:last-child { text-align: center; }
+        td:last-child a { float: none; }
+    td * { cursor: pointer; }
