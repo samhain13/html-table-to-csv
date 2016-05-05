@@ -11,7 +11,6 @@ table_editor = {
     'init': function(table_id, contents_field_id, delimiter_field_id) {
         this.contents_field = document.getElementById(contents_field_id);
         this.delimiter = document.getElementById(delimiter_field_id);
-        this.delimiter.setAttribute('onchange', 'table_editor.change_delimiter();');
         this.table = document.getElementById(table_id);
         this.draw_table();
     },
@@ -165,21 +164,18 @@ table_editor = {
         var d = this.delimiter.value;
         var lines = this.contents_field.value.split('\n');
         for (var i=0; i<lines.length; i++) {
-            // We want only lines that we can split.
-            if (lines[i].indexOf(d) > -1) {
-                var line_values = lines[i].split(d);
-                // The column names are on the first line.
-                if (i == 0) {
-                    this.columns = line_values;
-                // Every other line contains celldata.
-                } else {
-                    var row = {};
-                    for (var j=0; j<this.columns.length; j++) {
-                        var col = this.columns[j];
-                        if (j < line_values.length) row[col] = line_values[j];
-                    }
-                    this.rows.push(row);
+            var line_values = lines[i].split(d);
+            // The column names are on the first line.
+            if (i == 0) {
+                this.columns = line_values;
+            // Every other line contains celldata.
+            } else {
+                var row = {};
+                for (var j=0; j<this.columns.length; j++) {
+                    var col = this.columns[j];
+                    if (j < line_values.length) row[col] = line_values[j];
                 }
+                this.rows.push(row);
             }
         }
         this.draw_table();
