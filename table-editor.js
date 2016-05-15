@@ -96,7 +96,7 @@ table_editor = {
                     }
                     td.setAttribute('class', 'grey-out');
                 }
-                s.appendChild(document.createTextNode(value));
+                s.innerHTML = value;
                 td.appendChild(s);
                 tr.appendChild(td);
             }
@@ -130,9 +130,11 @@ table_editor = {
     'edit_row': function(row, col) {
         var r = this.rows[row];
         var c = this.columns[col];
-        // We need a null value explicitly because we're checking for null-ness elsewhere.
-        if (value = prompt('Modify value of ' + c + ':', (r[c]) ? r[c] : '')) r[c] = value;
-        else r[c] = null;
+        var value = prompt('Modify value of ' + c + ':', (r[c]) ? r[c] : '');
+        if (value != null) {
+            if (value.length > 0) r[c] = value;
+            else r[c] = null;
+        }
         this.draw_table();
     },
     
